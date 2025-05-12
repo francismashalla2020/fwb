@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.FWB"
+        android:usesCleartextTraffic="true"
+        tools:targetApi="31">
+        <activity
+            android:name=".EndorseDetails"
+            android:exported="false" />
+        <activity
+            android:name=".ListToEndorse"
+            android:exported="false" />
+        <activity
+            android:name=".LoanPayment"
+            android:exported="false" />
+        <activity
+            android:name=".LoanStatus"
+            android:exported="false" />
+        <activity
+            android:name=".LongTermLoan"
+            android:exported="false" />
+        <activity
+            android:name=".ExMemberDetails"
+            android:exported="false" />
+        <activity
+            android:name=".AllMembers"
+            android:exported="false" />
+        <activity
+            android:name=".MemberDetails"
+            android:exported="false" />
+        <activity
+            android:name=".AdminTools"
+            android:exported="false" />
+        <activity
+            android:name=".CheckMemberStatus"
+            android:exported="false" />
+        <activity
+            android:name=".CheckStatus"
+            android:exported="false" />
+        <activity
+            android:name=".RequestInfo"
+            android:exported="false" />
+        <activity
+            android:name=".FwbNews"
+            android:exported="false" />
+        <activity
+            android:name=".NewsDetails"
+            android:exported="false" />
+        <activity
+            android:name=".ContactUs"
+            android:exported="false" />
+        <activity
+            android:name=".Help"
+            android:exported="false" />
+        <activity
+            android:name=".AppDocs"
+            android:exported="false" />
+        <activity
+            android:name=".Appinfo"
+            android:exported="false" />
+        <activity
+            android:name=".AppAccount"
+            android:exported="false" />
+        <activity
+            android:name=".RegisterEx"
+            android:exported="false" />
+        <activity
+            android:name=".Register"
+            android:exported="false" />
+        <activity
+            android:name=".Login"
+            android:exported="false" />
+        <activity
+            android:name=".Home"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:theme="@style/Full">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

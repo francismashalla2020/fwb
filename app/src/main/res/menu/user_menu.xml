@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/account"
+        android:title="@string/a1_0"
+        android:enabled="true"
+        />
+    <item android:id="@+id/status"
+        android:title="@string/m6"
+        android:enabled="true"
+        />
+    <item android:id="@+id/about"
+        android:title="@string/m1"
+        android:enabled="true"
+        />
+    <item android:id="@+id/docs"
+        android:title="@string/m2"
+        android:enabled="true"
+        />
+    <item android:id="@+id/help"
+        android:title="@string/m3"
+        android:enabled="true"
+        />
+    <item android:id="@+id/contact"
+        android:title="@string/m4"
+        android:enabled="true"
+        />
+    <item android:id="@+id/share"
+        android:title="@string/m5"
+        android:enabled="true"
+        />
+</menu>
