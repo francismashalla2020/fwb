@@ -154,6 +154,8 @@
     <string name="a103">Member has been rejected successful</string>
     <string name="a104">There was a processing error. Please try again.</string>
     <string name="a105">Verification status:</string>
+    <string name="a106">Loan is approved yet by referee</string>
+    <string name="a107">Loan is not approved yet by referee</string>
     <string name="lo1">Long Term Loan</string>
     <string name="lo2">Long term loan amount ranges from Tsh 200,000 to 2,500,000</string>
     <string name="lo3">Loan amount</string>
@@ -176,11 +178,12 @@
     <string name="lo21">Relationship</string>
     <string name="lo22">Write relationship</string>
     <string name="lo23">Loan payment</string>
-    <string name="lo24">Shares payment</string>
+    <string name="lo24">Add financial details</string>
     <string name="lp">Loan Payment</string>
     <string name="lp1">Amount (in numerals)</string>
     <string name="lp2">Write amount in numerals.</string>
     <string name="lp3">Select loan type</string>
+    <string name="lp3_1">Selected loan type</string>
     <string name="lp4">Submit</string>
     <string name="lp5">Transaction reference</string>
     <string name="lp6">Write transaction reference</string>
@@ -206,9 +209,37 @@
     <string name="rejected">rejected</string>
     <string name="lts">Long term loan</string>
     <string name="ltss">Emergency loan</string>
+    <string name="f0">Financial Details</string>
+    <string name="f1">Shares</string>
+    <string name="f1_0">Write shares</string>
+    <string name="f2">Long term loan amount (include interest)</string>
+    <string name="f2_0">Write long term loan amount (include interest)</string>
+    <string name="f3">Emergency loan amount</string>
+    <string name="f3_0">Write emergency loan amount</string>
+    <string name="f4">Save</string>
+    <string name="f5">Failed to save financial record.</string>
+    <string name="f6">View all members financial details</string>
+    <string name="f7">All Members Financial Details</string>
+    <string name="f8">Shares:</string>
+    <string name="f9">Financial Details</string>
+    <string name="f10">Financial details</string>
+    <string name="f11">Edit details</string>
+    <string name="f12">Delete details</string>
+    <string name="f13">Description</string>
+    <string name="f14">Write transaction description</string>
+    <string name="f15">View my financials</string>
+    <string name="f16">My payment history</string>
+    <string name="f17">My Payment History</string>
+    <string name="rp1">Reset Password</string>
+    <string name="rp2">Reset password window</string>
+    <string name="rp3">New password</string>
+    <string name="rp4">Write new password</string>
+    <string name="rp5">Reset</string>
+    <string name="rp6">No user found with that phone number, retry</string>
+    <string name="rp7">Password reset successful, details have been sent to your phone number</string>
 
     <string-array name="loan_type">
-        <item>Long term loan</item>
+        <item>Long-Term Loan</item>
         <item>Emergency loan</item>
     </string-array>
 

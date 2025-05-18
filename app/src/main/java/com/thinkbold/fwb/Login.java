@@ -36,7 +36,7 @@ import java.net.URL;
 
 public class Login extends AppCompatActivity {
     ImageView menusT;
-    TextView login;
+    TextView login, reset;
     ProgressBar progressBar;
     EditText username, password;
     String uname, upass;
@@ -58,6 +58,14 @@ public class Login extends AppCompatActivity {
         username = findViewById(R.id.username);
         password = findViewById(R.id.password);
         layout = findViewById(R.id.layout);
+        reset = findViewById(R.id.reset);
+
+        reset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), ResetPassword.class));
+            }
+        });
 
         login = findViewById(R.id.login);
         login.setOnClickListener(new View.OnClickListener() {

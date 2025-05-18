@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="6dp">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/c_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:elevation="2dp"
+        app:cardUseCompatPadding="true"
+        app:cardCornerRadius="5dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/newsbg"
+            android:padding="8dp">
+
+            <!-- Circular Member Image -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="2dp"
+                app:cardCornerRadius="100dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="5dp">
+
+                <ImageView
+                    android:id="@+id/imageNews"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:scaleType="fitXY"
+                    app:srcCompat="@drawable/bankss"
+                    app:tint="@color/green"
+                    android:padding="15dp"
+                    android:contentDescription="@string/app_name" />
+            </androidx.cardview.widget.CardView>
+
+            <!-- Member Name -->
+            <TextView
+                android:id="@+id/financial_member_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/imageView"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:text="Member Name"
+                android:textColor="@color/green"
+                android:textSize="14sp"
+                android:fontFamily="@font/google_sans_bold"
+                android:visibility="gone"
+                />
+
+            <!-- Financial Details -->
+            <LinearLayout
+                android:id="@+id/details_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/financial_member_name"
+                android:layout_toEndOf="@id/imageView"
+                android:layout_marginTop="8dp"
+                android:orientation="vertical"
+                android:layout_marginStart="15dp"
+                android:layout_marginBottom="10dp">
+
+                <!-- Shares -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Long-Term Loan: "
+                        android:textSize="12sp"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/google_sans_regular" />
+                    <TextView
+                        android:id="@+id/loan_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="12sp"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/google_sans_regular" />
+                </LinearLayout>
+
+                <!-- Long-Term Loan -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Amount: "
+                        android:textSize="12sp"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/google_sans_regular" />
+                    <TextView
+                        android:id="@+id/amount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="12sp"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/google_sans_regular" />
+                </LinearLayout>
+
+                <!-- Long-Term Status -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Payment date: "
+                        android:textSize="12sp"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/google_sans_regular" />
+                    <TextView
+                        android:id="@+id/payment_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="12sp"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/google_sans_regular" />
+                </LinearLayout>
+
+                <!-- Emergency Loan -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Description: "
+                        android:textSize="12sp"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/google_sans_regular" />
+                    <TextView
+                        android:id="@+id/description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="12sp"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/google_sans_regular" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Loan amount: "
+                        android:textSize="12sp"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/google_sans_regular" />
+                    <TextView
+                        android:id="@+id/loan_amount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="12sp"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/google_sans_regular" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Balance: "
+                        android:textSize="12sp"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/google_sans_regular" />
+                    <TextView
+                        android:id="@+id/balance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="12sp"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/google_sans_regular" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Status: "
+                        android:textSize="12sp"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/google_sans_regular" />
+                    <TextView
+                        android:id="@+id/status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="12sp"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/google_sans_regular" />
+                </LinearLayout>
+
+                <!-- Emergency Status + View More Icon -->
+
+            </LinearLayout>
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>

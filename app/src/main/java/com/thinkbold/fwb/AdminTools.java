@@ -17,7 +17,7 @@ import androidx.cardview.widget.CardView;
 public class AdminTools extends AppCompatActivity {
 
     CardView loan, reports;
-    TextView allmembers, uname, roles;
+    TextView allmembers, uname, roles, allmembersfinancial;
     public static final String MYPREFERENCES = "MyPreferences_001";
     String id, surname, first_name, middle_name, phone_no, email, address, member_status, role, role_name, date_created;
     String c_name, c_role;
@@ -47,12 +47,20 @@ public class AdminTools extends AppCompatActivity {
         allmembers = findViewById(R.id.allmembers);
         uname = findViewById(R.id.uname);
         roles = findViewById(R.id.role);
+        allmembersfinancial = findViewById(R.id.allmembersfinancial);
 
         c_name = first_name + " " +surname;
         uname.setText(c_name);
         c_role = role_name;
         roles.setText(c_role);
         menusT = findViewById(R.id.menuST);
+
+        allmembersfinancial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), AllMFinancialDetails.class));
+            }
+        });
 
         allmembers.setOnClickListener(new View.OnClickListener() {
             @Override

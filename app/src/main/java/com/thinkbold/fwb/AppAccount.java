@@ -47,8 +47,8 @@ import java.util.List;
 
 public class AppAccount extends AppCompatActivity {
     ImageView menusT;
-    TextView news, uname, phone, details;
-    CardView adminTools, rLong, payLoan, rEmergency, rEndo;
+    TextView news, uname, phone, details, share;
+    CardView adminTools, rLong, payLoan, rEmergency, rEndo, payShares, myFinancial;
     LinearLayout layout;
     SharedPreferences regPreferences;
     public static final String MYPREFERENCES = "MyPreferences_001";
@@ -61,10 +61,11 @@ public class AppAccount extends AppCompatActivity {
     SharedPreferences.Editor editor;
     private List<Get_members> list_members;
 
-    String member_id,loan_amount, balance, emergency_loan, emergency_balance, description, d1, d2, d3, d4;
+    String member_id,loan_amount, balance, emergency_loan, emergency_balance, description, d0, d1, d2, d3, d4;
 
     TextView longloan, longloanDebt, emeloan, emeloanDebt;
     String sdata1, sdata2;
+    String member_name, shares, long_term_paid, long_term_status, emergency_status, emergency_paid;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -95,6 +96,7 @@ public class AppAccount extends AppCompatActivity {
         layout = findViewById(R.id.layout);
         payLoan = findViewById(R.id.payLoan);
         rEmergency = findViewById(R.id.rEmergency);
+        share = findViewById(R.id.share);
         rEndo = findViewById(R.id.rEndo);
         progressBar = findViewById(R.id.my_progressBarCars);
 
@@ -106,6 +108,27 @@ public class AppAccount extends AppCompatActivity {
         longloanDebt = findViewById(R.id.longloanDebt);
         emeloan = findViewById(R.id.emeloan);
         emeloanDebt = findViewById(R.id.emeloanDebt);
+        payShares = findViewById(R.id.payShares);
+        myFinancial = findViewById(R.id.myFinancial);
+
+        myFinancial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Bundle data = new Bundle();
+                Intent move = new Intent(AppAccount.this, FinancialSummary.class);
+                data.putString("memberId", id);
+                move.putExtras(data);
+                startActivity(move);
+            }
+        });
+
+        payShares.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), AddFinancialDetails.class));
+            }
+        });
 
         details.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -158,9 +181,6 @@ public class AppAccount extends AppCompatActivity {
         rEmergency.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
-
                 Dialog dialog = new Dialog(AppAccount.this);
                 dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                 dialog.setContentView(R.layout.dialog_emergencyloan);
@@ -221,7 +241,8 @@ public class AppAccount extends AppCompatActivity {
             }
         });
 
-        new loandetails().execute();
+        //new loandetails().execute();
+        new RetreavFinancialDetails().execute();
 
         if (isConnected()){
             new userdetails().execute();
@@ -646,6 +667,136 @@ public class AppAccount extends AppCompatActivity {
             }
         }
     }
+
+
+    class RetreavFinancialDetails extends AsyncTask {
+        protected void onPreExecute(){
+            super.onPreExecute();
+        }
+        @Override
+        protected Object doInBackground(Object[] objects) {
+            try {
+                String url = "https://thinkbold.africa/fwb/get_financials.php";
+                URL object = new URL(url);
+
+                HttpURLConnection con = (HttpURLConnection) object.openConnection();
+                con.setDoOutput(true);
+                con.setDoInput(true);
+                con.setRequestProperty("Content-Type", "application/json");
+                con.setRequestProperty("Accept", "application/json");
+                con.setRequestMethod("POST");
+                JSONObject cred = new JSONObject();
+
+                cred.put("member_id", id);
+
+
+                OutputStreamWriter wr = new OutputStreamWriter(con.getOutputStream());
+                wr.write(cred.toString());
+                wr.flush();
+                //display what returns the POST request
+                StringBuilder sb = new StringBuilder();
+                int HttpResult = con.getResponseCode();
+
+                Log.d("conn11", String.valueOf(con));
+                if (HttpResult == HttpURLConnection.HTTP_OK){
+                    BufferedReader br = new BufferedReader(
+                            new InputStreamReader(con.getInputStream(), "utf-8")
+                    );
+                    String line = null;
+                    while ((line = br.readLine()) != null){
+                        sb.append(line + "\n");
+                    }
+                    br.close();
+                    //some new codes
+                    JSONObject o = new JSONObject(sb.toString());
+                    JSONArray data = o.getJSONArray("data");
+                    for (int i = 0; i < data.length(); i++){
+                        JSONObject userdata = data.getJSONObject(i);
+                        member_id =  userdata.getString("member_id");
+                        member_name =  userdata.getString("member_name");
+                        shares =  userdata.getString("shares");
+                        loan_amount =  userdata.getString("long_term_loan");
+                        balance =  userdata.getString("long_term_loan_balance");
+                        long_term_paid =  userdata.getString("long_term_paid");
+
+                        long_term_status =  userdata.getString("long_term_status");
+                        emergency_loan =  userdata.getString("emergency_loan");
+                        emergency_paid =  userdata.getString("emergency_paid");
+                        emergency_balance =  userdata.getString("emergency_loan_balance");
+                        emergency_status =  userdata.getString("emergency_status");
+
+                        description =  userdata.getString("description");
+
+                    }
+                    plusmessage = o.getString("message");
+                    //end new codes
+                    if (plusmessage.equals("Success")){
+                        success = plusmessage;
+                        Log.d("lo11", success);
+                    }else if (plusmessage.equals("failed")){
+                        fail = plusmessage;
+                        Log.d("lo22", fail);
+                    }
+                }
+            }catch (Exception e){
+                //Toast.makeText(LoginHealthPeer.this, message, Toast.LENGTH_SHORT).show();
+                e.printStackTrace();
+            }
+            return plusmessage;
+        }
+        protected void onPostExecute(Object o){
+            super.onPostExecute(o);
+            if (plusmessage.equals(success)) {
+                String desc;
+                desc = description;
+                Toast.makeText(AppAccount.this, desc, Toast.LENGTH_SHORT).show();
+
+                d0 = shares;
+                d1 = loan_amount;
+                d2 = balance;
+                d3 = emergency_loan;
+                d4 = emergency_balance;
+
+                share.setText(d0);
+
+                if (shares.replace(",", "").equals("0")) {
+                    payShares.setVisibility(View.VISIBLE);
+                } else {
+                    payShares.setVisibility(View.GONE);
+                }
+
+                if (d1.equalsIgnoreCase("0")){
+                    longloan.setText("nil amount");
+
+                }else {
+                    longloan.setText(loan_amount);
+                    payLoan.setVisibility(View.VISIBLE);
+                }
+                if (d2.equalsIgnoreCase("0")){
+                    longloanDebt.setText("nil balance");
+                }else {
+                    longloanDebt.setText(balance);
+                }
+                if (d3.equalsIgnoreCase("0")){
+                    emeloan.setText("nil amount");
+                    rEmergency.setVisibility(View.VISIBLE);
+                }else {
+                    emeloan.setText(emergency_loan);
+                    payLoan.setVisibility(View.VISIBLE);
+                }
+                if (d4.equalsIgnoreCase("0")){
+                    emeloanDebt.setText("nil balance");
+                    rEmergency.setVisibility(View.VISIBLE);
+                }else {
+                    emeloanDebt.setText(emergency_balance);
+                }
+            }
+            else{
+                Toast.makeText(AppAccount.this, R.string.a84, Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+
 
 
     class sendData extends AsyncTask {

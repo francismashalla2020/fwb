@@ -24,6 +24,14 @@ public interface FWBApI {
     );
 
     @FormUrlEncoded
+    @POST("sendSMSn.php")
+    Observable<String> sendSMSViaNextSMS(
+            @Field("from") String sender,
+            @Field("to") String phone,
+            @Field("text") String message
+    );
+
+    @FormUrlEncoded
     @POST("delete_spare.php")
     Observable<String> deleteSpare(@Field("id") String id,
                                    @Field("tmps") String tmps

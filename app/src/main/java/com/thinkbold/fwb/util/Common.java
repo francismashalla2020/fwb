@@ -4,7 +4,7 @@ import com.thinkbold.fwb.Retrofit.FWBApI;
 import com.thinkbold.fwb.Retrofit.RetrofitClient;
 
 public class Common {
-    public static final String BASE_URL = "https://thinkbold.africa/hooded/";
+    public static final String BASE_URL = "https://thinkbold.africa/fwb/";
     //public static final String BASE_URL = "https://thinkbold.africa/fwb/";
 
     public static FWBApI getAPIs() {
